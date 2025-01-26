@@ -1,0 +1,14 @@
+QA_DistilGpt
+
+----- Summary of Results -----
+File: results/cosmosqa_results.json
+Mean Capability (Accuracy): 0.089
+Mean Entropy: 0.314
+--------------------------------
+
+---- Table-Like Summary (alpha=0.3) ----
+Mean Capability: 0.089
+Mean Entropy   : 0.314
+Mean UCS       : 0.078
+----------------------------------------
+
