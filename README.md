@@ -85,8 +85,8 @@ emergence_project/
 **Steps**:
 1. **Clone the Repository**  
    ```bash
-   git clone https://github.com/YourGitHandle/EmergentCapabilities.git
-   cd EmergentCapabilities
+   git clone https://github.com/enigma-kun/EmergentCapabilities-Uncertainty-Aware-Capability-Manifolds-in-LLMs.git
+   cd EmergentCapabilities-Uncertainty-Aware-Capability-Manifolds-in-LLMs
    ```
 2. **Create & Activate Conda Environment**  
    ```bash
