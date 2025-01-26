@@ -3,12 +3,9 @@
 A research codebase accompanying the paper:
 
 > **“Uncertainty-Aware ε-Capability Manifolds for Predicting Emergent Behaviors in Large Language Models.”**  
-> *[Your Name]*, *[Collaborators]*  
+> *Shubham Chakraborty*, *Anupam Srivastava*  
 > **Conference**: *Potentially under review for ICML 2025*
 
-## Author:
-Shubham Chakraborty 
-Anupam Srivastava
 ---
 
 ## **Abstract**
@@ -174,11 +171,11 @@ See `analysis.ipynb` for line plots and interpretative commentary.
 If you find this code or framework useful in your research, please cite:
 
 ```bibtex
-@article{your2024emergent,
+@article{your2025emergent,
   title={Uncertainty-Aware \epsilon-Capability Manifolds for Predicting Emergent Behaviors in Large Language Models},
-  author={Your Name and Collaborators},
+  author={Shubham Chakraborty, Anupam Srivastava},
   journal={Under Review at ICML},
-  year={2024}
+  year={2025}
 }
 ```
 
@@ -192,7 +189,7 @@ This project is licensed under the **MIT License** (or CC BY 4.0 / whichever you
 
 ### **Contact / Contributing**
 
-- **Questions / Issues**: Raise a GitHub Issue or email [you@domain.com](mailto:you@domain.com).  
+- **Questions / Issues**: Raise a GitHub Issue or email [you@domain.com](mailto:chakraborty.shubham007@gmail.com).  
 - **Contributions**: Pull requests are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) for more details on coding guidelines.
 
 ---
