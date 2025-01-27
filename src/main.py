@@ -33,10 +33,10 @@ def parse_cosmosqa_item(item):
 
 def main():
     # 1. Load a large model or smaller model as needed
-    tokenizer, model = load_model(model_name="gpt2-xl", device="cuda")
+    tokenizer, model = load_model(model_name="gpt2", device="cuda")
 
     # 2. Load the CosmosQA dataset
-    data_path = Path("data\cosmosqa_10k.json")  # example path
+    data_path = Path("data\hellaswag_10k.json")  # example path
     with data_path.open("r") as f:
         data = json.load(f)
 
@@ -77,7 +77,7 @@ def main():
 
     # 4. Save results
     os.makedirs("results", exist_ok=True)
-    out_file = "results/cosmosqa_results_gpt2-xl.json"
+    out_file = "results/hellaswag_results_gpt2.json"
     with open(out_file, "w") as f:
         json.dump(results, f, indent=2)
     print(f"Results saved to {out_file}")

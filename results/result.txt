@@ -72,3 +72,18 @@ Mean Capability: 0.210
 Mean Entropy   : 1.297
 Mean UCS       : 0.126
 ----------------------------------------
+
+
+CI_distilgpt2
+
+----- Summary of Results -----
+File: results/hellaswag_results_distilgpt2.json
+Mean Capability (Accuracy): 0.053
+Mean Entropy: 0.254
+--------------------------------
+
+---- Table-Like Summary (alpha=0.3) ----
+Mean Capability: 0.053
+Mean Entropy   : 0.254
+Mean UCS       : 0.050
+----------------------------------------

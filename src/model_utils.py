@@ -3,7 +3,7 @@
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
-def load_model(model_name="gpt2-large", device="cuda"):
+def load_model(model_name="gpt2", device="cuda"):
     """
     Load a pre-trained model and tokenizer from Hugging Face.
     Returns both the tokenizer and model, moved to the specified device.
