@@ -12,3 +12,32 @@ Mean Entropy   : 0.314
 Mean UCS       : 0.078
 ----------------------------------------
 
+
+QA_gpt2
+
+----- Summary of Results -----
+File: results/cosmosqa_results_gpt2.json
+Mean Capability (Accuracy): 0.026
+Mean Entropy: 0.035
+--------------------------------
+
+---- Table-Like Summary (alpha=0.3) ----
+Mean Capability: 0.026
+Mean Entropy   : 0.035
+Mean UCS       : 0.024
+----------------------------------------
+
+
+QA_gpt2-medium
+
+----- Summary of Results -----
+File: results/cosmosqa_results_gpt2-medium.json
+Mean Capability (Accuracy): 0.058
+Mean Entropy: 0.089
+--------------------------------
+
+---- Table-Like Summary (alpha=0.3) ----
+Mean Capability: 0.058
+Mean Entropy   : 0.089
+Mean UCS       : 0.055
+----------------------------------------

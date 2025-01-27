@@ -189,7 +189,7 @@ This project is licensed under the **MIT License** (or CC BY 4.0 / whichever you
 
 ### **Contact / Contributing**
 
-- **Questions / Issues**: Raise a GitHub Issue or email [you@domain.com](mailto:chakraborty.shubham007@gmail.com).  
+- **Questions / Issues**: Raise a GitHub Issue or email [chakraborty.shubham007@gmail.com](mailto:chakraborty.shubham007@gmail.com).  
 - **Contributions**: Pull requests are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) for more details on coding guidelines.
 
 ---
