@@ -1,4 +1,4 @@
-# **EmergenceDemo: Uncertainty-Aware Capability Manifolds in LLMs**
+# **EmergentCapabilities: Uncertainty-Aware Capability Manifolds in LLMs**
 
 A research codebase accompanying our paper:
 
@@ -178,9 +178,13 @@ We gather all experiment outputs in a **single table** (45 entries: 9 models × 
 3. **Bar Chart per Dataset**  
    - `bar_chart_all_datasets.png` (Figure 3) has 5 subplots for the 5 tasks, each showing 9 models with two bars: **Accuracy** vs. **UCS**.  
    - Observes how \(\mathrm{UCS}\) re‐ranks models that are accurate but uncertain.
+![Bar Chart per Dataset](<Datasets  with UCS and ACC.png>)
+
 
 4. **Emergence Threshold**  
    - `emergence_fraction_vs_tau.png` (Figure 4) shows how many samples exceed a threshold \(\tau\) on UCS. Phase transitions become visible, highlighting emergent points.
+![Emergence Threshold](results/emergence_fraction_vs_tau.png)
+
 
 By combining these visualizations, we see that **larger models** do better overall but can remain uncertain in edge cases, and smaller models can occasionally be more “certain” but less capable. **UCS** reveals a more nuanced trade‐off.
 
@@ -201,7 +205,7 @@ If this repository or framework aids your research, please cite:
 
 ```bibtex
 @article{Chakraborty2025Emergent,
-  title={{Uncertainty-Aware \epsilon-Capability Manifolds for Predicting Emergent Behaviors in Large Language Models}},
+  title={{Uncertainty-Aware e-Capability Manifolds for Predicting Emergent Behaviors in Large Language Models}},
   author={Shubham Chakraborty and Anupam Srivastava},
   journal={Under Review at ICML},
   year={2025}
@@ -210,12 +214,17 @@ If this repository or framework aids your research, please cite:
 
 ---
 
-## **8. License**
+## **License**
 
-Licensed under the **MIT** (or CC BY 4.0) license—see the [LICENSE](LICENSE) file.  
-
-**Contributions**: Pull requests and issues are welcome. Check out [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.  
+This project is licensed under the **MIT License** (or CC BY 4.0 / whichever you choose) – see the [LICENSE](LICENSE) file for details.
 
 ---
 
-**Thank you** for exploring our approach to **emergent capabilities in LLMs**. We hope this code and documentation provide a solid foundation for further research on scaling, reliability, and safe AI development!
+### **Contact / Contributing**
+
+- **Questions / Issues**: Raise a GitHub Issue or email [chakraborty.shubham007@gmail.com](mailto:chakraborty.shubham007@gmail.com).  
+- **Contributions**: Pull requests are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) for more details on coding guidelines.
+
+---
+
+**Thank you** for checking out our work! We hope this framework aids your research on emergent capabilities in LLMs, uncertainty quantification, and safe AI development.
