@@ -1,5 +1,3 @@
----
-
 # **EmergenceDemo: Uncertainty-Aware Capability Manifolds in LLMs**
 
 A research codebase accompanying our paper:
@@ -169,10 +167,13 @@ We gather all experiment outputs in a **single table** (45 entries: 9 models × 
 1. **Param vs. Accuracy (Figure 1)**  
    - DistilGPT2 (82M) → modest accuracy across tasks.  
    - 7B models (Llama‐2‐7B, Mistral‐7B, Qwen‐7B) → significantly higher accuracy, though certain tasks remain challenging.
+![Param vs. Accuracy](results/param_vs_acc_legend.png)
 
 2. **Param vs. UCS (Figure 2)**  
    - Incorporates uncertainty, capturing confidence.  
    - Large models sometimes have high accuracy yet also non‐trivial entropy, yielding moderate UCS.
+![Param vs. UCS](results/param_vs_ucs_legend.png)
+
 
 3. **Bar Chart per Dataset**  
    - `bar_chart_all_datasets.png` (Figure 3) has 5 subplots for the 5 tasks, each showing 9 models with two bars: **Accuracy** vs. **UCS**.  
