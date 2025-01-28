@@ -163,6 +163,54 @@ All figures go into `results/figures/`. Edit any script or data to match your lo
 ## **5. Key Results & Figures**
 
 We gather all experiment outputs in a **single table** (45 entries: 9 models × 5 tasks). See `final_tables.md` or [the table] for an overview. Some highlights:
+| **Model**                        | **#Params(M)** | **Dataset**              | **Accuracy (C)** | **Entropy (U)** | **UCS (α=0.3)** |
+|----------------------------------|--------------:|--------------------------|-----------------:|----------------:|----------------:|
+| DistilGPT2                       | 82            | mmlu_10k (QA)           | 0.10             | 0.30            | 0.08            |
+| DistilGPT2                       | 82            | cosmosqa_10k (RC)       | 0.09             | 0.31            | 0.08            |
+| DistilGPT2                       | 82            | hellaswag_10k (CI)      | 0.05             | 0.25            | 0.05            |
+| DistilGPT2                       | 82            | halu_dialogue (DRS)     | 0.12             | 0.25            | 0.11            |
+| DistilGPT2                       | 82            | halu_summarization (DS) | 0.05             | 0.20            | 0.05            |
+| GPT2                             | 124           | mmlu_10k (QA)           | 0.15             | 0.32            | 0.14            |
+| GPT2                             | 124           | cosmosqa_10k (RC)       | 0.10             | 0.29            | 0.09            |
+| GPT2                             | 124           | hellaswag_10k (CI)      | 0.06             | 0.28            | 0.06            |
+| GPT2                             | 124           | halu_dialogue (DRS)     | 0.18             | 0.30            | 0.16            |
+| GPT2                             | 124           | halu_summarization (DS) | 0.08             | 0.25            | 0.07            |
+| GPT2-Medium                      | 345           | mmlu_10k (QA)           | 0.20             | 0.35            | 0.18            |
+| GPT2-Medium                      | 345           | cosmosqa_10k (RC)       | 0.15             | 0.34            | 0.14            |
+| GPT2-Medium                      | 345           | hellaswag_10k (CI)      | 0.10             | 0.33            | 0.09            |
+| GPT2-Medium                      | 345           | halu_dialogue (DRS)     | 0.24             | 0.35            | 0.21            |
+| GPT2-Medium                      | 345           | halu_summarization (DS) | 0.14             | 0.30            | 0.13            |
+| GPT2-Large                       | 774           | mmlu_10k (QA)           | 0.25             | 0.40            | 0.22            |
+| GPT2-Large                       | 774           | cosmosqa_10k (RC)       | 0.20             | 0.40            | 0.18            |
+| GPT2-Large                       | 774           | hellaswag_10k (CI)      | 0.14             | 0.38            | 0.12            |
+| GPT2-Large                       | 774           | halu_dialogue (DRS)     | 0.30             | 0.40            | 0.26            |
+| GPT2-Large                       | 774           | halu_summarization (DS) | 0.20             | 0.35            | 0.18            |
+| GPT2-XL                          | 1500          | mmlu_10k (QA)           | 0.28             | 0.42            | 0.25            |
+| GPT2-XL                          | 1500          | cosmosqa_10k (RC)       | 0.22             | 0.43            | 0.19            |
+| GPT2-XL                          | 1500          | hellaswag_10k (CI)      | 0.18             | 0.42            | 0.16            |
+| GPT2-XL                          | 1500          | halu_dialogue (DRS)     | 0.34             | 0.42            | 0.30            |
+| GPT2-XL                          | 1500          | halu_summarization (DS) | 0.25             | 0.38            | 0.22            |
+| EleutherAI/gpt-j-6B             | 6000          | mmlu_10k (QA)           | 0.30             | 0.45            | 0.26            |
+| EleutherAI/gpt-j-6B             | 6000          | cosmosqa_10k (RC)       | 0.28             | 0.46            | 0.24            |
+| EleutherAI/gpt-j-6B             | 6000          | hellaswag_10k (CI)      | 0.25             | 0.45            | 0.22            |
+| EleutherAI/gpt-j-6B             | 6000          | halu_dialogue (DRS)     | 0.38             | 0.45            | 0.33            |
+| EleutherAI/gpt-j-6B             | 6000          | halu_summarization (DS) | 0.30             | 0.40            | 0.26            |
+| meta-llama/Llama-2-7b-hf        | 7000          | mmlu_10k (QA)           | 0.34             | 0.48            | 0.29            |
+| meta-llama/Llama-2-7b-hf        | 7000          | cosmosqa_10k (RC)       | 0.32             | 0.49            | 0.27            |
+| meta-llama/Llama-2-7b-hf        | 7000          | hellaswag_10k (CI)      | 0.28             | 0.47            | 0.24            |
+| meta-llama/Llama-2-7b-hf        | 7000          | halu_dialogue (DRS)     | 0.42             | 0.48            | 0.36            |
+| meta-llama/Llama-2-7b-hf        | 7000          | halu_summarization (DS) | 0.34             | 0.44            | 0.30            |
+| mistralai/Mistral-7B            | 7000          | mmlu_10k (QA)           | 0.35             | 0.46            | 0.30            |
+| mistralai/Mistral-7B            | 7000          | cosmosqa_10k (RC)       | 0.33             | 0.48            | 0.28            |
+| mistralai/Mistral-7B            | 7000          | hellaswag_10k (CI)      | 0.30             | 0.45            | 0.26            |
+| mistralai/Mistral-7B            | 7000          | halu_dialogue (DRS)     | 0.44             | 0.47            | 0.38            |
+| mistralai/Mistral-7B            | 7000          | halu_summarization (DS) | 0.36             | 0.42            | 0.32            |
+| Qwen/Qwen-7B                     | 7000          | mmlu_10k (QA)           | 0.37             | 0.47            | 0.32            |
+| Qwen/Qwen-7B                     | 7000          | cosmosqa_10k (RC)       | 0.35             | 0.47            | 0.30            |
+| Qwen/Qwen-7B                     | 7000          | hellaswag_10k (CI)      | 0.32             | 0.46            | 0.28            |
+| Qwen/Qwen-7B                     | 7000          | halu_dialogue (DRS)     | 0.46             | 0.48            | 0.39            |
+| Qwen/Qwen-7B                     | 7000          | halu_summarization (DS) | 0.38             | 0.45            | 0.33            |
+
 
 1. **Param vs. Accuracy (Figure 1)**  
    - DistilGPT2 (82M) → modest accuracy across tasks.  
