@@ -87,3 +87,18 @@ Mean Capability: 0.053
 Mean Entropy   : 0.254
 Mean UCS       : 0.050
 ----------------------------------------
+
+CI_gpt2
+
+----- Summary of Results -----
+File: results/hellaswag_results_gpt2.json
+Mean Capability (Accuracy): 0.067
+Mean Entropy: 0.107
+--------------------------------
+
+---- Table-Like Summary (alpha=0.3) ----
+Mean Capability: 0.067
+Mean Entropy   : 0.107
+Mean UCS       : 0.063
+----------------------------------------
+

@@ -1,25 +1,27 @@
-# **EmergentCapabilities: Uncertainty-Aware Capability Manifolds in LLMs**
+---
 
-A research codebase accompanying the paper:
+# **EmergenceDemo: Uncertainty-Aware Capability Manifolds in LLMs**
+
+A research codebase accompanying our paper:
 
 > **“Uncertainty-Aware ε-Capability Manifolds for Predicting Emergent Behaviors in Large Language Models.”**  
 > *Shubham Chakraborty*, *Anupam Srivastava*  
-> **Conference**: *Potentially under review for ICML 2025*
+> **Conference**: *Under Review for ICML 2025*
 
 ---
 
 ## **Abstract**
 
+Large Language Models (LLMs) can exhibit *emergent capabilities*—unexpected jumps in performance or new skills—once they exceed certain parameter scales. This repository offers both a **theoretical** and **practical** framework to **measure**, **predict**, and **visualize** these emergent phenomena. Our approach combines:
 
+1. **ε-Capability Manifolds**: A geometry‐centric perspective of capability boundaries within parameter space.  
+2. **Uncertainty-Aware Capability Score (UCS)**: Merging performance with uncertainty estimates to see *when* a capability is not only present but also **reliable**.
 
-Scaling laws in Large Language Models (LLMs) often result in *emergent capabilities*—discrete jumps in model behavior at certain scales. This repository provides a **theoretical and empirical** framework for measuring, predicting, and explaining these emergent phenomena. By combining **ε-capability manifolds** (a geometry-centric view of capability boundaries) with **Uncertainty-Aware Capability Score (UCS)**, we highlight **when** a capability “turns on” and **how reliable** it is under uncertainty. Our code includes:
-
-1. **Multiple-choice QA** pipeline for tasks like CosmosQA.  
-2. **Uncertainty** estimation (entropy, conformal prediction, etc.).  
-3. **Ablation** scripts for sweeping \(\alpha\) (uncertainty penalty) and \(\tau\) (capability threshold).  
-4. **Comprehensive** evaluation on various LLMs, from DistilGPT2 to 7B‐plus scales.
-
-This repository aims to make **research reproducible** and to serve as a reference for further studies on emergent behavior in LLMs.
+The code includes:
+- Pipelines for **multiple-choice tasks** (QA, reading comprehension, etc.).  
+- Uncertainty quantification via **entropy** or optional conformal methods.  
+- Ablation scripts for **\(\alpha\) sweeps** in UCS and **\(\tau\) thresholds** for emergent detection.  
+- Comprehensive example runs from **DistilGPT2** (~82M params) up to **7B** parameter models (Mistral, Qwen, Llama-2, GPT-J).
 
 ---
 
@@ -32,68 +34,85 @@ This repository aims to make **research reproducible** and to serve as a referen
    - [Data Preparation](#data-preparation)  
    - [Running Experiments](#running-experiments)  
    - [Analysis & Plots](#analysis--plots)  
-5. [Results & Benchmarks](#results--benchmarks)  
-6. [Ablation & Sensitivity Studies](#ablation--sensitivity-studies)  
+5. [Key Results & Figures](#key-results--figures)  
+6. [Ablations & Sensitivity](#ablations--sensitivity)  
 7. [Citation](#citation)  
 8. [License](#license)  
 
 ---
 
-## **Features**
+## **1. Features**
 
-- **ε-Capability Manifolds**: A geometry-based notion of how capabilities form boundaries in parameter space.  
-- **Uncertainty-Aware Capability Score (UCS)**: Balances performance and uncertainty, enabling more robust detection of emergent behaviors.  
-- **Multiple Datasets**: Example tasks covering QA (CosmosQA, MMLU), Reading Comprehension, Summarization, etc.  
-- **Scalable**: Supports models from **DistilGPT2** (~82M params) to **GPT2‐medium** (~345M), or any Hugging Face model that fits your GPU.  
-- **Interactive Notebook**: Jupyter notebooks for analyzing UCS vs. alpha, fraction emergent vs. tau, and more.
+- **ε-Capability Manifolds**: Formalize emergent capability boundaries in parameter space.  
+- **Uncertainty-Aware Capability Score (UCS)**: Incorporates model *uncertainty* to identify robustly emergent skills.  
+- **Multiple Datasets**: Examples for QA (mmlu_10k), reading comprehension (cosmosqa_10k), commonsense inference (hellaswag_10k), dialogue response selection (halu_dialogue), and summarization (halu_summarization).  
+- **Visualizations**: 
+  - Param vs. Accuracy, Param vs. UCS (with legends)  
+  - Grouped bar charts per dataset (Accuracy vs. UCS)  
+  - Emergence threshold plots (\(\tau\) sweeps)  
 
 ---
 
-## **Project Structure**
+## **2. Project Structure**
+
+An example directory layout:
 
 ```
 emergence_project/
 ├── data/
-│   ├── cosmosqa_10k.json     # Example dataset
-│   ├── ...                   # Other task data
-│   └── README.md
-├── src/
-│   ├── main.py               # Main pipeline to run multi-choice QA
-│   ├── model_utils.py        # Model loading utilities
-│   ├── multiple_choice.py     # Probability extraction for MCQA
-│   ├── capability_utils.py   # Functions for measuring capability & uncertainty
+│   ├── mmlu_10k.json
+│   ├── cosmosqa_10k.json
+│   ├── hellaswag_10k.json
+│   ├── halu_dialogue.json
+│   ├── halu_summarization.json
 │   └── ...
 ├── results/
-│   ├── cosmosqa_distilgpt2.json # Example output
-│   ├── figures/                  # Saved plots
+│   ├── figures/
+│   │   ├── param_vs_acc_legend.png
+│   │   ├── param_vs_ucs_legend.png
+│   │   ├── bar_chart_all_datasets.png
+│   │   ├── emergence_fraction_vs_tau.png
+│   │   └── ...
+│   ├── cosmosqa_results_distilgpt2.json
+│   ├── ...
+├── src/
+│   ├── main.py               # Example multi-choice pipeline
+│   ├── model_utils.py        # HuggingFace model loading
+│   ├── multiple_choice.py    # Probability extraction logic
+│   ├── capability_utils.py   # Functions for capability, uncertainty
 │   └── ...
-├── analysis.ipynb            # Notebook for post-processing & plotting
+├── analysis.ipynb            # Interactive notebook for analysis
+├── summary_plot.py           # e.g. code for param vs. acc/ucs
+├── final_plot_table.py       # e.g. script that merges everything
+├── emergence_threshold_plot.py
+├── bar_chart_all_datasets.py
 ├── requirements.txt
-├── LICENSE
-└── README.md  <- you are here
+├── README.md                 # You're here
+└── LICENSE
 ```
 
 ---
 
-## **Installation & Setup**
+## **3. Installation & Setup**
 
 **Requirements**:
-- Python 3.9+  
-- [Anaconda / Miniconda](https://docs.conda.io/en/latest/) recommended  
-- NVIDIA GPU with CUDA 11.8 (for large LLMs)
+- Python 3.9+
+- [Anaconda / Miniconda](https://docs.conda.io/en/latest/) recommended
+- An NVIDIA GPU with CUDA 11.8 for larger models
 
 **Steps**:
-1. **Clone the Repository**  
+
+1. **Clone** the repo:
    ```bash
    git clone https://github.com/enigma-kun/EmergentCapabilities-Uncertainty-Aware-Capability-Manifolds-in-LLMs.git
    cd EmergentCapabilities-Uncertainty-Aware-Capability-Manifolds-in-LLMs
    ```
-2. **Create & Activate Conda Environment**  
+2. **Create & activate** a conda environment:
    ```bash
    conda create -n emergence_env python=3.9 -y
    conda activate emergence_env
    ```
-3. **Install Dependencies**  
+3. **Install** dependencies:
    ```bash
    conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
    pip install -r requirements.txt
@@ -101,79 +120,88 @@ emergence_project/
 
 ---
 
-## **Usage**
+## **4. Usage**
 
-### **Data Preparation**
+### 4.1 Data Preparation
 
-- Place your **CosmosQA** data in `data/cosmosqa_10k.json`.  
-- For additional tasks (RC, Summarization, etc.), format them as multiple-choice JSON or adapt the code in `src/main.py` to parse them.
+Put your JSON tasks in `data/`. For example:
+- `mmlu_10k.json` → question answering
+- `cosmosqa_10k.json` → reading comprehension
+- `hellaswag_10k.json` → commonsense inference
+- `halu_dialogue.json` → dialogue response selection
+- `halu_summarization.json` → summarization
 
-### **Running Experiments**
+Make sure each file is in a suitable multi-choice format or adapt `src/main.py`.
 
-From the project root, run:
+### 4.2 Running Experiments
 
+Example:
 ```bash
 python src/main.py \
-    --model_name distilgpt2 \
-    --data_path data/cosmosqa_10k.json \
-    --output results/cosmosqa_distilgpt2.json \
-    --alpha 0.3 \
-    --device cuda
+  --model_name gpt2 \
+  --data_path data/cosmosqa_10k.json \
+  --output results/cosmosqa_results_gpt2.json \
+  --alpha 0.3 \
+  --device cuda
 ```
+Then check `results/cosmosqa_results_gpt2.json`.
 
-- **model_name**: A valid Hugging Face model identifier (e.g., `gpt2`, `meta-llama/Llama-2-7b-hf`).  
-- **data_path**: Path to your QA dataset in multiple-choice format.  
-- **output**: Where to save the JSON results.  
-- **alpha**: Uncertainty penalty weight, if you want to incorporate it at runtime.  
-- **device**: “cuda” or “cpu.”
+### 4.3 Analysis & Plots
 
-### **Analysis & Plots**
+1. **Notebook**: `analysis.ipynb` provides a step‐by‐step approach to:
+   - Load your JSON results  
+   - Compute mean accuracy, entropy, and UCS  
+   - Plot \(\alpha\) sweeps, fraction emergent vs. \(\tau\), etc.
 
-Open the **`analysis.ipynb`** notebook:
+2. **Scripts**:  
+   - `summary_plot.py`: Creates param vs. accuracy or param vs. UCS with legends.  
+   - `bar_chart_all_datasets.py`: A 5‐subplot figure comparing accuracy vs. UCS across tasks.  
+   - `emergence_threshold_plot.py`: Plots fraction of items with UCS ≥ \(\tau\), revealing emergent phase transitions.
 
-```bash
-jupyter notebook analysis.ipynb
-```
-
-Inside the notebook, update the `results_json_path` to point to your newly generated JSON. Run the cells to get:
-
-- Mean accuracy, entropy, and UCS.  
-- Plots of **UCS vs. alpha** and **fraction emergent vs. tau**.  
-- Optionally, `plt.savefig` to store figures in `results/figures/`.
+All figures go into `results/figures/`. Edit any script or data to match your local paths.
 
 ---
 
-## **Results & Benchmarks**
+## **5. Key Results & Figures**
 
-Our **preliminary** experiments show:
+We gather all experiment outputs in a **single table** (45 entries: 9 models × 5 tasks). See `final_tables.md` or [the table] for an overview. Some highlights:
 
-| Model         | #Params | Mean Acc (C) | Mean Entropy (U) | Mean UCS (α=0.3) | Notes           |
-|---------------|--------:|-------------:|------------------:|------------------:|-----------------|
-| distilgpt2    | ~82M    | 0.42         | 0.54             | 0.30             | partial data    |
-| gpt2          | ~124M   | 0.55         | 0.40             | 0.49             | robust?         |
-| gpt2-medium   | ~345M   | 0.60         | 0.38             | 0.53             | ...             |
+1. **Param vs. Accuracy (Figure 1)**  
+   - DistilGPT2 (82M) → modest accuracy across tasks.  
+   - 7B models (Llama‐2‐7B, Mistral‐7B, Qwen‐7B) → significantly higher accuracy, though certain tasks remain challenging.
 
-Plots and additional results can be found in the [analysis notebook](analysis.ipynb).
+2. **Param vs. UCS (Figure 2)**  
+   - Incorporates uncertainty, capturing confidence.  
+   - Large models sometimes have high accuracy yet also non‐trivial entropy, yielding moderate UCS.
+
+3. **Bar Chart per Dataset**  
+   - `bar_chart_all_datasets.png` (Figure 3) has 5 subplots for the 5 tasks, each showing 9 models with two bars: **Accuracy** vs. **UCS**.  
+   - Observes how \(\mathrm{UCS}\) re‐ranks models that are accurate but uncertain.
+
+4. **Emergence Threshold**  
+   - `emergence_fraction_vs_tau.png` (Figure 4) shows how many samples exceed a threshold \(\tau\) on UCS. Phase transitions become visible, highlighting emergent points.
+
+By combining these visualizations, we see that **larger models** do better overall but can remain uncertain in edge cases, and smaller models can occasionally be more “certain” but less capable. **UCS** reveals a more nuanced trade‐off.
 
 ---
 
-## **Ablation & Sensitivity Studies**
+## **6. Ablations & Sensitivity**
 
-- **Alpha Sweep**: We systematically vary \(\alpha \in [0,1]\) to see how UCS trades off raw capability vs. uncertainty.  
-- **Tau Sweep**: We vary the threshold \(\tau\) to decide when a capability is “emergent.”  
+- **\(\alpha\) Sweep**: Adjust how strongly uncertainty penalizes performance. We find smaller models degrade sharply as \(\alpha\) grows, while bigger models degrade more gracefully, indicating more consistent confidence.  
+- **\(\tau\) Sweep**: Emergence detection—how many items cross a certain UCS threshold. Plotting fraction emergent vs. \(\tau\) reveals discrete “jumps” at certain scales.
 
-See `analysis.ipynb` for line plots and interpretative commentary.
+Scripts like `emergence_threshold_plot.py` or `analysis.ipynb` can generate these ablations. We typically place these extended results in an **Appendix** for brevity.
 
 ---
 
-## **Citation**
+## **7. Citation**
 
-If you find this code or framework useful in your research, please cite:
+If this repository or framework aids your research, please cite:
 
 ```bibtex
-@article{your2025emergent,
-  title={Uncertainty-Aware \epsilon-Capability Manifolds for Predicting Emergent Behaviors in Large Language Models},
-  author={Shubham Chakraborty, Anupam Srivastava},
+@article{Chakraborty2025Emergent,
+  title={{Uncertainty-Aware \epsilon-Capability Manifolds for Predicting Emergent Behaviors in Large Language Models}},
+  author={Shubham Chakraborty and Anupam Srivastava},
   journal={Under Review at ICML},
   year={2025}
 }
@@ -181,17 +209,12 @@ If you find this code or framework useful in your research, please cite:
 
 ---
 
-## **License**
+## **8. License**
 
-This project is licensed under the **MIT License** (or CC BY 4.0 / whichever you choose) – see the [LICENSE](LICENSE) file for details.
+Licensed under the **MIT** (or CC BY 4.0) license—see the [LICENSE](LICENSE) file.  
 
----
-
-### **Contact / Contributing**
-
-- **Questions / Issues**: Raise a GitHub Issue or email [chakraborty.shubham007@gmail.com](mailto:chakraborty.shubham007@gmail.com).  
-- **Contributions**: Pull requests are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) for more details on coding guidelines.
+**Contributions**: Pull requests and issues are welcome. Check out [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.  
 
 ---
 
-**Thank you** for checking out our work! We hope this framework aids your research on emergent capabilities in LLMs, uncertainty quantification, and safe AI development.
+**Thank you** for exploring our approach to **emergent capabilities in LLMs**. We hope this code and documentation provide a solid foundation for further research on scaling, reliability, and safe AI development!
