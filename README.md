@@ -120,6 +120,8 @@ emergence_project/
 
 ## **4. Usage**
 
+![Method](<some figures code/Untitled-1.png>)
+
 ### 4.1 Data Preparation
 
 Put your JSON tasks in `data/`. For example:
@@ -155,6 +157,8 @@ Then check `results/cosmosqa_results_gpt2.json`.
    - `summary_plot.py`: Creates param vs. accuracy or param vs. UCS with legends.  
    - `bar_chart_all_datasets.py`: A 5‐subplot figure comparing accuracy vs. UCS across tasks.  
    - `emergence_threshold_plot.py`: Plots fraction of items with UCS ≥ \(\tau\), revealing emergent phase transitions.
+
+
 
 All figures go into `results/figures/`. Edit any script or data to match your local paths.
 
