@@ -40,7 +40,7 @@ for mdl in models:
 
 plt.xlabel("Threshold (tau)")
 plt.ylabel("Fraction Emergent (UCS >= tau)")
-plt.title("Emergence Fraction vs. Tau (example demonstration)")
+plt.title("Emergence Fraction vs. Tau")
 plt.grid(True)
 plt.legend()
 plt.tight_layout()

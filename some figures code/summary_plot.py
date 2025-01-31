@@ -95,10 +95,20 @@ model_markers = {
     "Qwen/Qwen-7B":       "h"
 }
 
+import matplotlib.pyplot as plt
+import numpy as np
+from collections import defaultdict
+
+# [Previous data_records, dataset_colors, and model_markers remain the same]
+
 def plot_metric(metric_key, ylabel, filename):
-    plt.figure(figsize=(6,4))
-    # Group by (dataset, model)
-    plotted_legend_keys = set()
+    # Create figure with extra width to accommodate legend
+    plt.figure(figsize=(10, 6))  # Increased width from 6 to 10
+    
+    # Create the main plot area
+    ax = plt.gca()
+    
+    # Plot data points
     for rec in data_records:
         ds = rec["dataset"]
         mdl = rec["model"]
@@ -106,40 +116,57 @@ def plot_metric(metric_key, ylabel, filename):
         yval = rec[metric_key]
         color = dataset_colors[ds]
         marker = model_markers.get(mdl, "o")
-        legend_key = (ds, mdl)  # We'll build a composite so each pair is unique
-
+        
         # Plot single point
-        plt.scatter(xval, yval, c=color, marker=marker, s=60)
+        ax.scatter(xval, yval, c=color, marker=marker, s=60)
 
-    plt.xscale("log")
-    plt.xlabel("Parameter Count (log scale)")
-    plt.ylabel(ylabel)
-    plt.title(f"Param vs. {ylabel}")
+    # Set scale and labels
+    ax.set_xscale("log")
+    ax.set_xlabel("Parameter Count (log scale)")
+    ax.set_ylabel(ylabel)
+    ax.set_title(f"Param vs. {ylabel}")
 
-    # Create legend: one entry per dataset and model
-    # We'll do two separate legends: dataset (color) + model (marker)
-    # 1) dataset legend
+    # Create dataset legend handles
     ds_handles = []
     for ds_name, c in dataset_colors.items():
         ds_handles.append(plt.Line2D([], [], color=c, marker='o', linestyle='None', label=ds_name))
-    legend1 = plt.legend(handles=ds_handles, title="Datasets", loc="upper left")
-    plt.gca().add_artist(legend1)
 
-    # 2) model legend
+    # Create model legend handles
     model_handles = []
     for m, mk in model_markers.items():
         model_handles.append(plt.Line2D([], [], color='black', marker=mk, linestyle='None', label=m))
-    plt.legend(handles=model_handles, title="Models", loc="upper right")
 
-    plt.grid(True)
+    # Place legends to the right of the plot
+    # First legend (Datasets)
+    first_legend = ax.legend(handles=ds_handles, 
+                           title="Datasets", 
+                           bbox_to_anchor=(1.05, 1),
+                           loc='upper left')
+    ax.add_artist(first_legend)
+
+    # Second legend (Models)
+    ax.legend(handles=model_handles, 
+             title="Models", 
+             bbox_to_anchor=(1.05, 0.5),
+             loc='center left')
+
+    # Add grid
+    ax.grid(True)
+
+    # Adjust layout to prevent legend cutoff
     plt.tight_layout()
-    plt.savefig(filename, dpi=300)
+    
+    # Additional adjustment to ensure legend fits
+    plt.subplots_adjust(right=0.8)  # Make room for legends on the right
+    
+    # Save figure
+    plt.savefig(filename, dpi=300, bbox_inches='tight')
     plt.close()
     print(f"Saved {filename}.")
 
 def main():
-    plot_metric("acc",  "Accuracy (C)", "param_vs_acc_legend.png")
-    plot_metric("ucs",  "UCS (alpha=0.3)", "param_vs_ucs_legend.png")
+    plot_metric("acc", "Accuracy (C)", "param_vs_acc_legend.png")
+    plot_metric("ucs", "UCS (alpha=0.3)", "param_vs_ucs_legend.png")
 
 if __name__ == "__main__":
     main()
