@@ -3,8 +3,6 @@
 A research codebase accompanying our paper:
 
 > **“Uncertainty-Aware ε-Capability Manifolds for Predicting Emergent Behaviors in Large Language Models.”**  
-> *Shubham Chakraborty*, *Anupam Srivastava*  
-> **Conference**: *Under Review for ICML 2025*
 
 ---
 
@@ -255,14 +253,6 @@ Scripts like `emergence_threshold_plot.py` or `analysis.ipynb` can generate thes
 
 If this repository or framework aids your research, please cite:
 
-```bibtex
-@article{Chakraborty2025Emergent,
-  title={{Uncertainty-Aware e-Capability Manifolds for Predicting Emergent Behaviors in Large Language Models}},
-  author={Shubham Chakraborty and Anupam Srivastava},
-  journal={Under Review at ICML},
-  year={2025}
-}
-```
 
 ---
 
@@ -275,7 +265,6 @@ This project is licensed under the **MIT License** (or CC BY 4.0 / whichever you
 ### **Contact / Contributing**
 
 - **Questions / Issues**: Raise a GitHub Issue or email [chakraborty.shubham007@gmail.com](mailto:chakraborty.shubham007@gmail.com).  
-- **Contributions**: Pull requests are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) for more details on coding guidelines.
 
 ---
 
